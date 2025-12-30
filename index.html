@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule - Spring 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        card: 'hsl(var(--card))',
+                        muted: 'hsl(var(--muted))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --muted: 210 40% 96.1%;
+            --border: 214.3 31.8% 91.4%;
+        }
+        
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --muted: 217.2 32.6% 17.5%;
+            --border: 217.2 32.6% 17.5%;
+        }
+        
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        
+        .dialog-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.2s;
+            z-index: 50;
+        }
+        
+        .dialog-content {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            max-width: 28rem;
+            width: calc(100% - 2rem);
+            animation: slideIn 0.2s;
+            z-index: 51;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -48%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-4 md:p-6">
+        <div class="mx-auto max-w-7xl">
+            <header class="mb-6">
+                <h1 class="text-2xl font-medium">Class Schedule</h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Spring 2026</p>
+            </header>
+
+            <div class="border rounded-lg overflow-hidden mb-6 bg-white dark:bg-gray-900" style="border-color: hsl(var(--border))">
+                <div class="grid grid-cols-[100px_repeat(4,1fr)]">
+                    <!-- Header -->
+                    <div class="border-b border-r p-3" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border))"></div>
+                    <div class="border-b border-r p-3 text-center text-sm font-medium" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border))">Monday</div>
+                    <div class="border-b border-r p-3 text-center text-sm font-medium" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border))">Tuesday</div>
+                    <div class="border-b border-r p-3 text-center text-sm font-medium" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border))">Wednesday</div>
+                    <div class="border-b p-3 text-center text-sm font-medium" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border))">Thursday</div>
+
+                    <!-- Time column -->
+                    <div class="border-r" style="border-color: hsl(var(--border))">
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">8:00 AM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">9:00 AM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">10:00 AM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">11:00 AM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">12:00 PM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">1:00 PM</div>
+                        <div class="h-20 border-b p-2 text-xs text-gray-600 dark:text-gray-400" style="border-color: hsl(var(--border))">2:00 PM</div>
+                        <div class="h-20 p-2 text-xs text-gray-600 dark:text-gray-400">3:00 PM</div>
+                    </div>
+
+                    <!-- Monday -->
+                    <div class="border-r relative" style="border-color: hsl(var(--border))">
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20" style="border-color: hsl(var(--border))"></div>
+                        
+                        <!-- MATH 1314-020 -->
+                        <div class="absolute left-0 right-0 bg-blue-600 dark:bg-blue-700 p-2 mx-0.5 rounded-sm cursor-pointer hover:opacity-90 transition-opacity overflow-hidden" 
+                             style="top: 0%; height: 15.625%;"
+                             onclick="showDialog(0)">
+                            <div class="text-white h-full flex flex-col justify-center leading-tight">
+                                <div class="font-semibold text-[11px] md:text-xs mb-1 line-clamp-2">MATH 1314-020</div>
+                                <div class="text-[10px] md:text-[11px] opacity-90">8:00 AM - 9:15 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="border-r relative" style="border-color: hsl(var(--border))">
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20" style="border-color: hsl(var(--border))"></div>
+                        
+                        <!-- Implementing & Supporting COS -->
+                        <div class="absolute left-0 right-0 bg-purple-600 dark:bg-purple-700 p-2 mx-0.5 rounded-sm cursor-pointer hover:opacity-90 transition-opacity overflow-hidden" 
+                             style="top: 25%; height: 18.75%;"
+                             onclick="showDialog(1)">
+                            <div class="text-white h-full flex flex-col justify-center leading-tight">
+                                <div class="font-semibold text-[11px] md:text-xs mb-1 line-clamp-2">Implementing & Supporting COS</div>
+                                <div class="text-[10px] md:text-[11px] opacity-90">10:00 AM - 11:30 AM</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fund of Networking Tech -->
+                        <div class="absolute left-0 right-0 bg-green-600 dark:bg-green-700 p-2 mx-0.5 rounded-sm cursor-pointer hover:opacity-90 transition-opacity overflow-hidden" 
+                             style="top: 62.5%; height: 31.25%;"
+                             onclick="showDialog(2)">
+                            <div class="text-white h-full flex flex-col justify-center leading-tight">
+                                <div class="font-semibold text-[11px] md:text-xs mb-1 line-clamp-2">Fund of Networking Tech</div>
+                                <div class="text-[10px] md:text-[11px] opacity-90">1:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="border-r relative" style="border-color: hsl(var(--border))">
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20" style="border-color: hsl(var(--border))"></div>
+                        
+                        <!-- MATH 1314-020 -->
+                        <div class="absolute left-0 right-0 bg-blue-600 dark:bg-blue-700 p-2 mx-0.5 rounded-sm cursor-pointer hover:opacity-90 transition-opacity overflow-hidden" 
+                             style="top: 0%; height: 15.625%;"
+                             onclick="showDialog(0)">
+                            <div class="text-white h-full flex flex-col justify-center leading-tight">
+                                <div class="font-semibold text-[11px] md:text-xs mb-1 line-clamp-2">MATH 1314-020</div>
+                                <div class="text-[10px] md:text-[11px] opacity-90">8:00 AM - 9:15 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="relative">
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20 border-b" style="border-color: hsl(var(--border))"></div>
+                        <div class="h-20" style="border-color: hsl(var(--border))"></div>
+                        
+                        <!-- Routers -->
+                        <div class="absolute left-0 right-0 bg-orange-600 dark:bg-orange-700 p-2 mx-0.5 rounded-sm cursor-pointer hover:opacity-90 transition-opacity overflow-hidden" 
+                             style="top: 62.5%; height: 31.25%;"
+                             onclick="showDialog(3)">
+                            <div class="text-white h-full flex flex-col justify-center leading-tight">
+                                <div class="font-semibold text-[11px] md:text-xs mb-1 line-clamp-2">Routers</div>
+                                <div class="text-[10px] md:text-[11px] opacity-90">1:00 PM - 3:30 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Online courses -->
+            <div class="border rounded-lg p-4 bg-white dark:bg-gray-900" style="border-color: hsl(var(--border))">
+                <h2 class="text-sm font-medium mb-3">Online</h2>
+                <div class="space-y-2">
+                    <div class="text-sm p-3 rounded-md cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                         style="background-color: hsl(var(--muted))"
+                         onclick="showDialog(4)">
+                        <span class="font-medium">Linux Installation and Configuration</span>
+                        <span class="text-gray-600 dark:text-gray-400 ml-2 text-xs">(ITSC 1316-001)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dialog -->
+    <div id="dialog" class="hidden">
+        <div class="dialog-backdrop" onclick="closeDialog()"></div>
+        <div class="dialog-content">
+            <div class="mb-4">
+                <h2 id="dialog-title" class="text-lg font-semibold mb-1"></h2>
+                <p id="dialog-code" class="text-sm text-gray-600 dark:text-gray-400"></p>
+            </div>
+            <div id="dialog-body" class="space-y-4 text-sm"></div>
+            <button onclick="closeDialog()" class="mt-6 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-md text-sm font-medium transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const classes = [
+            {
+                course: "MATH 1314-020",
+                code: "MATH 1314-020",
+                room: "Comal Learning Resources Ctr 223",
+                instructor: "Frederick Carlton Cockrum",
+                email: "fcockrum@alamo.edu",
+                days: ["Monday", "Wednesday"],
+                startTime: "8:00 AM",
+                endTime: "9:15 AM",
+            },
+            {
+                course: "Implementing & Supporting COS",
+                code: "ITNW 1308-004",
+                room: "Medina CTE Center 208",
+                instructor: "Linda Marquez",
+                email: "lmarquez@alamo.edu",
+                days: ["Tuesday"],
+                startTime: "10:00 AM",
+                endTime: "11:30 AM",
+                hybrid: true,
+            },
+            {
+                course: "Fund of Networking Tech",
+                code: "ITNW 1425-005",
+                room: "Medina CTE Center 203",
+                instructor: "Geeta Goswami",
+                email: "ggoswami@alamo.edu",
+                days: ["Tuesday"],
+                startTime: "1:00 PM",
+                endTime: "3:30 PM",
+                hybrid: true,
+            },
+            {
+                course: "Routers",
+                code: "ITNW 2412-003",
+                room: "Medina CTE Center 203",
+                instructor: "Geeta Goswami",
+                email: "ggoswami@alamo.edu",
+                days: ["Thursday"],
+                startTime: "1:00 PM",
+                endTime: "3:30 PM",
+                hybrid: true,
+            },
+            {
+                course: "Linux Installation and Configuration",
+                code: "ITSC 1316-001",
+                instructor: "Fleming, Aaron",
+                email: "afleming@alamo.edu",
+            }
+        ];
+
+        function showDialog(index) {
+            const classItem = classes[index];
+            const dialog = document.getElementById('dialog');
+            const title = document.getElementById('dialog-title');
+            const code = document.getElementById('dialog-code');
+            const body = document.getElementById('dialog-body');
+
+            title.textContent = classItem.course;
+            code.textContent = classItem.code;
+
+            let bodyHTML = '';
+            
+            if (classItem.room) {
+                bodyHTML += `
+                    <div>
+                        <span class="font-medium">Room:</span>
+                        <span class="text-gray-600 dark:text-gray-400"> ${classItem.room}</span>
+                    </div>
+                `;
+            }
+            
+            if (classItem.startTime) {
+                bodyHTML += `
+                    <div>
+                        <span class="font-medium">Time:</span>
+                        <span class="text-gray-600 dark:text-gray-400"> ${classItem.startTime} - ${classItem.endTime}</span>
+                    </div>
+                `;
+            }
+            
+            if (classItem.days) {
+                bodyHTML += `
+                    <div>
+                        <span class="font-medium">Days:</span>
+                        <span class="text-gray-600 dark:text-gray-400"> ${classItem.days.join(', ')}</span>
+                    </div>
+                `;
+            }
+            
+            if (classItem.instructor) {
+                bodyHTML += `
+                    <div>
+                        <span class="font-medium">Instructor:</span>
+                        <span class="text-gray-600 dark:text-gray-400"> ${classItem.instructor}</span>
+                    </div>
+                `;
+            }
+            
+            if (classItem.email) {
+                bodyHTML += `
+                    <div>
+                        <span class="font-medium">Email:</span>
+                        <a href="mailto:${classItem.email}" class="text-blue-600 dark:text-blue-400 hover:underline break-all"> ${classItem.email}</a>
+                    </div>
+                `;
+            }
+            
+            if (classItem.hybrid) {
+                bodyHTML += `
+                    <div class="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-3 py-1.5 rounded-md text-xs font-medium">
+                        Hybrid Course
+                    </div>
+                `;
+            }
+
+            body.innerHTML = bodyHTML;
+            dialog.classList.remove('hidden');
+        }
+
+        function closeDialog() {
+            document.getElementById('dialog').classList.add('hidden');
+        }
+
+        // Close dialog on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDialog();
+            }
+        });
+    </script>
+</body>
+</html>
